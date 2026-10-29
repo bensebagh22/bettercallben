@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Better Call Ben · Votre stratège IA. De la créa à la prod.</title>
+<meta name="description" content="Benjamin Sebagh, stratège IA créative. Formation, production et workflows IA sur mesure pour les marques. Better Call Ben." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Better Call Ben · Votre stratège IA" />
+<meta property="og:description" content="Je branche votre cerveau sur l'IA générative créative. Formation, production, workflows sur mesure." />
+<meta property="og:image" content="assets/poster.png" />
+<meta property="og:type" content="website" />
+
+<!-- Fonts : Anton (display), Caveat (script), Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Spotlight curseur : lampe de bureau chaude qui suit la souris -->
+<div class="spotlight" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===================================================================
+     LE FIL : circuit SVG vivant, fixe en overlay, se dessine au scroll
+     =================================================================== -->
+<svg class="wire" id="wire" aria-hidden="true" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="wireGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="signalGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="50%" stop-color="var(--accent)" />
+      <stop offset="100%" stop-color="transparent" />
+    </linearGradient>
+  </defs>
+
+  <!-- tracé fantôme (rail discret) -->
+  <path id="wirePathGhost" class="wire-ghost" d="" fill="none" />
+  <!-- tracé qui se dessine -->
+  <path id="wirePath" class="wire-draw" d="" fill="none" filter="url(#wireGlow)" />
+  <!-- impulsion lumineuse qui voyage -->
+  <path id="wirePulse" class="wire-pulse" d="" fill="none" />
+</svg>
+
+<!-- Connecteurs : petites puces qui s'allument quand le fil arrive -->
+<div class="connectors" id="connectors" aria-hidden="true"></div>
+
+<!-- Nav minimale -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#hero" aria-label="Better Call Ben, accueil">
+    <span class="nav__brand-better">Better</span>
+    <span class="nav__brand-call">Call</span>
+    <span class="nav__brand-ben">Ben</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#piliers">Services</a>
+    <a href="#work">Réalisations</a>
+    <a href="#cta" class="nav__cta">Réserver un appel</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============================ 1. HERO ============================ -->
+  <section class="hero" id="hero" data-connect="hero">
+    <div class="hero__media">
+      <img src="assets/hero.png" alt="Benjamin Sebagh, stratège IA créative" class="hero__img" />
+      <!-- Emplacement futur : vidéo hero de fond, même cadrage -->
+      <!-- <video class="hero__video" src="assets/hero-loop.mp4" autoplay muted loop playsinline></video> -->
+      <div class="hero__veil" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="eyebrow">Benjamin Sebagh · Stratège IA créative</p>
+      <h1 class="hero__title">
+        <span class="hero__line">Votre stratège <em class="accent">IA</em>.</span>
+        <span class="hero__line">De la créa à la <em class="accent">prod</em>.</span>
+      </h1>
+      <p class="hero__lede">
+        Je branche votre cerveau sur l'IA générative. Depuis 2024, je forme vos équipes,
+        je produis vos contenus et je construis vos workflows IA sur mesure.
+        Avec une règle : si ça a l'air généré, c'est raté.
+      </p>
+      <div class="hero__actions">
+        <a href="#cta" class="btn btn--primary">Réserver un appel</a>
+        <a href="#piliers" class="btn btn--ghost">Voir ce que je fais</a>
+      </div>
+    </div>
+
+    <!-- Cerveau + puce animés : le point de départ du fil -->
+    <svg class="brainchip" viewBox="0 0 220 120" aria-hidden="true">
+      <g class="brainchip__brain" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round">
+        <path d="M58 60c-10-2-16-10-12-20 2-6 9-9 15-7 1-7 9-12 18-9 6-9 22-8 25 2 9-1 15 6 13 14 7 4 7 14 0 19 2 8-6 15-15 13-4 7-16 7-21 1-8 4-19-1-19-10-7-1-11-9-4-16z" />
+        <path d="M70 38c4 5 4 13 0 18M84 32c-3 7-2 14 3 20M98 35c-2 8 0 15 6 19M76 56c5 2 11 1 15-3" />
+      </g>
+      <!-- jack / fil qui sort du cerveau vers la puce -->
+      <path class="brainchip__cord" d="M120 60 C150 60 150 60 168 60" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" />
+      <g class="brainchip__chip" stroke="var(--accent)" stroke-width="2.4" fill="none">
+        <rect x="170" y="44" width="32" height="32" rx="3" />
+        <line x1="176" y1="44" x2="176" y2="36" /><line x1="186" y1="44" x2="186" y2="36" /><line x1="196" y1="44" x2="196" y2="36" />
+        <line x1="176" y1="76" x2="176" y2="84" /><line x1="186" y1="76" x2="186" y2="84" /><line x1="196" y1="76" x2="196" y2="84" />
+        <line x1="170" y1="52" x2="162" y2="52" /><line x1="170" y1="68" x2="162" y2="68" />
+        <line x1="202" y1="52" x2="210" y2="52" /><line x1="202" y1="68" x2="210" y2="68" />
+        <rect x="180" y="54" width="12" height="12" rx="1.5" class="brainchip__core" />
+      </g>
+    </svg>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Suivez le fil</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ============================ 2. LEDE / THESIS ============================ -->
+  <section class="lede" id="lede" data-connect="lede">
+    <p class="lede__kicker">La thèse</p>
+    <h2 class="lede__big">
+      L'IA ne remplace pas votre cerveau.<br />
+      <span class="accent">Elle s'y branche.</span>
+    </h2>
+    <p class="lede__sub">
+      Le bon moteur pour chaque usage. Une méthode qui valide chaque étape.
+      Un œil qui refuse tout ce qui a l'air IA. C'est la différence entre
+      du contenu généré et du contenu qui vous ressemble.
+    </p>
+  </section>
+
+  <!-- ============================ 3. LES 4 PILIERS ============================ -->
+  <section class="piliers" id="piliers">
+    <header class="section-head">
+      <p class="section-head__kicker">Mes services</p>
+      <h2 class="section-head__title">Je forme. Je produis. Je câble.</h2>
+    </header>
+
+    <ol class="piliers__list">
+      <li class="pilier" data-connect="p1">
+        <span class="pilier__index">01</span>
+        <h3 class="pilier__title">IA <em class="accent">Training</em></h3>
+        <p class="pilier__lead">Je forme vos équipes.</p>
+        <p class="pilier__body">Formation à l'IA générative créative, sur-mesure et calée sur vos vrais enjeux. Ponctuelle ou continue, dans vos locaux ou les miens. Écrite pour des équipes créa, pas pour des ingénieurs.</p>
+      </li>
+      <li class="pilier" data-connect="p2">
+        <span class="pilier__index">02</span>
+        <h3 class="pilier__title">IA <em class="accent">Prod</em></h3>
+        <p class="pilier__lead">Je produis pour vous.</p>
+        <p class="pilier__body">Visuels premium, packshots, retouche, snack content, films, avatars. Chaque livrable passe par un comparatif de moteurs et une validation plan par plan. Prêt à diffuser, droits tous supports inclus.</p>
+      </li>
+      <li class="pilier" data-connect="p4">
+        <span class="pilier__index">03</span>
+        <h3 class="pilier__title">IA <em class="accent">Workflow</em></h3>
+        <p class="pilier__lead">Je construis vos workflows sur mesure.</p>
+        <p class="pilier__body">Des workflows IA créatifs conçus pour vos besoins, sur toutes les plateformes nodales : Weavy, Magnific Spaces, Pletor. Je teste les moteurs sur vos images, je câble le graphe minimal, et je vous livre un outil prêt à tourner, documenté, au coût connu par rendu.</p>
+      </li>
+    </ol>
+  </section>
+
+
+  <!-- ============================ 3 bis. LA STACK ============================ -->
+  <section class="stack" id="stack" data-connect="stack" aria-label="Les outils maîtrisés">
+    <p class="stack__kicker">Les outils que je manipule tous les jours</p>
+    <div class="stack__marquee">
+      <ul class="stack__track">
+        <li class="tool"><img src="assets/logos/higgsfield.png" alt="" loading="lazy" /><span>Higgsfield</span></li>
+        <li class="tool"><img src="assets/logos/magnific.svg" alt="" loading="lazy" /><span>Magnific</span></li>
+        <li class="tool"><img src="assets/logos/pletor.png" alt="" loading="lazy" /><span>Pletor</span></li>
+        <li class="tool"><img src="assets/logos/weavy.svg" alt="" loading="lazy" /><span>Weavy</span></li>
+        <li class="tool"><img src="assets/logos/claude.svg" alt="" loading="lazy" /><span>Claude</span></li>
+        <li class="tool"><img src="assets/logos/heygen.png" alt="" loading="lazy" /><span>HeyGen</span></li>
+        <li class="tool"><img src="assets/logos/elevenlabs.svg" alt="" loading="lazy" /><span>ElevenLabs</span></li>
+        <li class="tool"><img src="assets/logos/gemini.svg" alt="" loading="lazy" /><span>Gemini · Veo</span></li>
+        <li class="tool"><img src="assets/logos/webflow.svg" alt="" loading="lazy" /><span>Webflow</span></li>
+      </ul>
+      <ul class="stack__track" aria-hidden="true">
+        <li class="tool"><img src="assets/logos/higgsfield.png" alt="" loading="lazy" /><span>Higgsfield</span></li>
+        <li class="tool"><img src="assets/logos/magnific.svg" alt="" loading="lazy" /><span>Magnific</span></li>
+        <li class="tool"><img src="assets/logos/pletor.png" alt="" loading="lazy" /><span>Pletor</span></li>
+        <li class="tool"><img src="assets/logos/weavy.svg" alt="" loading="lazy" /><span>Weavy</span></li>
+        <li class="tool"><img src="assets/logos/claude.svg" alt="" loading="lazy" /><span>Claude</span></li>
+        <li class="tool"><img src="assets/logos/heygen.png" alt="" loading="lazy" /><span>HeyGen</span></li>
+        <li class="tool"><img src="assets/logos/elevenlabs.svg" alt="" loading="lazy" /><span>ElevenLabs</span></li>
+        <li class="tool"><img src="assets/logos/gemini.svg" alt="" loading="lazy" /><span>Gemini · Veo</span></li>
+        <li class="tool"><img src="assets/logos/webflow.svg" alt="" loading="lazy" /><span>Webflow</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================ 4. CHIFFRES ============================ -->
+  <section class="stats" id="stats" data-connect="stats">
+    <div class="stat">
+      <span class="stat__num" data-count="25" data-prefix="+">+25</span>
+      <span class="stat__label">marques formées depuis 2024</span>
+    </div>
+    <span class="stat__node" aria-hidden="true"></span>
+    <div class="stat">
+      <span class="stat__num" data-count="150">150</span>
+      <span class="stat__label">personnes formées</span>
+    </div>
+    <span class="stat__node" aria-hidden="true"></span>
+    <div class="stat">
+      <span class="stat__num" data-count="50">50</span>
+      <span class="stat__label">journées de formation</span>
+    </div>
+  </section>
+
+  <!-- ============================ 5. PORTFOLIO / WORK ============================ -->
+  <section class="work" id="work">
+    <header class="section-head">
+      <p class="section-head__kicker">Réalisations 100 % IA</p>
+      <h2 class="section-head__title">Des preuves, pas des promesses</h2>
+    </header>
+
+    <div class="work__filters" role="tablist" aria-label="Filtrer par service">
+      <button class="chip is-active" data-filter="all">Tout</button>
+      <button class="chip" data-filter="prod">Prod</button>
+      <button class="chip" data-filter="demo">Démos</button>
+    </div>
+
+    <div class="work__grid">
+      <figure class="film film--wide" data-cat="demo">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/ben-ia.jpg" data-src="assets/video/ben-ia.mp4" data-title="Ben × IA" aria-label="Ben transformé par IA"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Ben × IA</strong><span>Un selfie, deux décors. Transfert de mouvement sur une vraie vidéo.</span><span class="film__tags">Démo</span></figcaption>
+      </figure>
+      <figure class="film film--wide" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/kiabi-paparazzi.jpg" data-src="assets/video/kiabi-paparazzi.mp4" data-title="Kiabi · film publicitaire IA" aria-label="Film Kiabi"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Kiabi</strong><span>Film publicitaire 100 % IA. Une famille traitée en star par des paparazzis hors champ. Casting, décors et prises générés, prix réels incrustés.</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+      <figure class="film film--portrait" data-cat="demo">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/this-is-ai.jpg" data-src="assets/video/this-is-ai.mp4" data-title="Démo réalisme" aria-label="Démo réalisme de peau"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Démo réalisme</strong><span>Peau, pores, reflets. Tout est généré.</span><span class="film__tags">Démo</span></figcaption>
+      </figure>
+      <figure class="film film--wide" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/balagan-16x9.jpg" data-src="assets/video/balagan-16x9.mp4" data-src-portrait="assets/video/balagan-9x16.mp4" data-poster-portrait="assets/video/balagan-9x16.jpg" data-title="Balagan" aria-label="Film Balagan"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Balagan</strong><span>Film 100 % IA. Pourim à Tel Aviv, un seul plan-séquence, décors tirés de vraies photos.</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+      <figure class="film film--portrait" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/souccot-diorama.jpg" data-src="assets/video/souccot-diorama.mp4" data-title="Souccot" aria-label="Film Souccot en diorama papier"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Souccot</strong><span>Vidéo faceless en diorama papier, voix off et musique générées.</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+      <figure class="film film--wide" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/aura-dubai.jpg" data-src="assets/video/aura-dubai.mp4" data-title="Aura · Dubaï" aria-label="Projet immobilier Aura à Dubaï"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Aura · Dubaï</strong><span>Projet immobilier. Du croquis au chantier, de la maquette à la tour livrée. Tout est généré.</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+      <figure class="film film--wide" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/quais-de-seine-1.jpg" data-src="assets/video/quais-de-seine-1.mp4" data-title="Quais de Seine · le projet" aria-label="Projet des quais de Seine"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Quais de Seine · le projet</strong><span>Un aménagement raconté du croquis à la nuit. Maquette, chantier, promenade, tout est généré.</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+      <figure class="film film--wide" data-cat="demo">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/quarterly-google.jpg" data-src="assets/video/quarterly-google.mp4" data-title="Rush 2025" aria-label="Rush 2025"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Rush 2025</strong><span>Trente secondes, zéro tournage. Un rush d'exploration, décor après décor.</span><span class="film__tags">Démo</span></figcaption>
+      </figure>
+      <figure class="film film--portrait" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/belgium-rugby.jpg" data-src="assets/video/belgium-rugby.mp4" data-title="Belgium Rugby" aria-label="Pub Belgium Rugby"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Belgium Rugby</strong><span>Pub maillots sur vraies images transformées. Six produits, zéro tournage.</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+      <figure class="film film--portrait" data-cat="prod">
+        <video class="lazyvid" muted loop playsinline preload="none" poster="assets/video/mia-saint-gobain.jpg" data-src="assets/video/mia-saint-gobain.mp4" data-title="Saint-Gobain · MIA" aria-label="Avatar MIA pour Saint-Gobain"></video>
+        <button class="film__open" type="button" aria-label="Voir avec le son">Voir avec le son</button>
+        <figcaption class="film__cap"><strong>Saint-Gobain · MIA</strong><span>Avatar-ambassadrice sur TikTok. Une égérie sans contrat.</span><span class="film__figs"><b>28M</b> vues · <b>75M</b> engagements</span><span class="film__tags">Prod</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <!-- bande narrative : la cabine -->
+  <section class="band" aria-label="Cabine téléphonique">
+    <img src="assets/payphone.png" alt="Better Call Ben à la cabine téléphonique" loading="lazy" />
+    <p class="band__cap">Storm. Toujours décrocher.</p>
+  </section>
+
+  <!-- ============================ 6. TÉMOIGNAGE ============================ -->
+  <section class="quote" id="quote" data-connect="quote">
+    <blockquote class="quote__text">
+      « Ben est super pédagogue. La synthèse actu IA donne une vue globale de tous les
+      outils sans avoir à chercher partout. Et ça donne trop envie de tester,
+      genre le <span class="accent">système nodal de Weavy</span>. »
+    </blockquote>
+    <figcaption class="quote__author">
+      <strong>Anaïs Fouet</strong><span>Directrice Artistique Senior</span>
+    </figcaption>
+  </section>
+
+  <!-- ============================ 7. CTA ============================ -->
+  <section class="cta" id="cta" data-connect="cta">
+    <div class="cta__phone" aria-hidden="true">
+      <svg viewBox="0 0 120 120" class="cta__handset">
+        <path d="M30 28c-6 0-10 5-9 11 4 38 32 66 70 70 6 1 11-3 11-9v-14c0-4-3-8-7-9l-13-3c-4-1-8 1-10 4l-3 5c-13-6-23-16-29-29l5-3c3-2 5-6 4-10l-3-13c-1-4-5-7-9-7z"
+          fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" />
+      </svg>
+    </div>
+    <h2 class="cta__title">Un problème en IA créa ?<br /><span class="cta__ben">Better Call <em>Ben</em>.</span></h2>
+    <a href="https://calendly.com/better-call-ben" target="_blank" rel="noopener" class="btn btn--primary btn--ring">Réserver un appel</a>
+    <div class="cta__contact">
+      <a href="mailto:benjamin@splashr.io">benjamin@splashr.io</a>
+      <span aria-hidden="true">·</span>
+      <a href="tel:+33637627059">+33 6 37 62 70 59</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lightbox vidéo avec son -->
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" type="button" aria-label="Fermer">×</button>
+  <video class="lightbox__video" controls playsinline></video>
+  <p class="lightbox__title"></p>
+</div>
+
+<!-- ============================ 8. FOOTER ============================ -->
+<footer class="footer" id="footer">
+  <div class="footer__brand">
+    <span class="footer__better">Better</span>
+    <span class="footer__call">Call</span>
+    <span class="footer__ben">Ben</span>
+  </div>
+  <!-- la puce finale où le fil se rebranche -->
+  <svg class="footer__chip" viewBox="0 0 60 60" aria-hidden="true">
+    <rect x="14" y="14" width="32" height="32" rx="3" fill="none" stroke="var(--accent)" stroke-width="2.4" />
+    <rect x="24" y="24" width="12" height="12" rx="1.5" fill="none" stroke="var(--accent)" stroke-width="2.4" class="footer__core" />
+    <g stroke="var(--accent)" stroke-width="2.4">
+      <line x1="22" y1="14" x2="22" y2="6" /><line x1="38" y1="14" x2="38" y2="6" />
+      <line x1="22" y1="46" x2="22" y2="54" /><line x1="38" y1="46" x2="38" y2="54" />
+      <line x1="14" y1="22" x2="6" y2="22" /><line x1="14" y1="38" x2="6" y2="38" />
+      <line x1="46" y1="22" x2="54" y2="22" /><line x1="46" y1="38" x2="54" y2="38" />
+    </g>
+  </svg>
+  <p class="footer__legal">© 2026 Better Call Ben · Benjamin Sebagh · Stratège IA créative</p>
+</footer>
+
+<!-- Libs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
