@@ -509,3 +509,6 @@ section { position: relative; z-index: 5; }
 .band img { aspect-ratio: auto; height: auto; object-fit: unset; }
 .band__cap { top: 18px; bottom: auto; }
 @media (max-width: 760px) { .band img { aspect-ratio: auto; } }
+
+/* lightbox fermée par défaut (hors plateforme claude.ai, l'attribut hidden doit gagner) */
+.lightbox[hidden] { display: none !important; }
